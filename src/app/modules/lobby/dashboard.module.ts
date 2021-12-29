@@ -3,20 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { CustomModeComponent } from './pages/custom-mode/custom-mode.component';
-import { DefaultModeComponent } from './pages/default-mode/default-mode.component';
 import { LobbyComponent } from './pages/lobby.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { GameRoomComponent } from './pages/game-room/game-room.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    CustomModeComponent,
     LobbyComponent,
-    DefaultModeComponent
+    GameRoomComponent
+
   ],
   imports: [
     CommonModule,

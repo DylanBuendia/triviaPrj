@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Question } from 'src/app/models/interfaces/trivia.models';
 
 import { LobbyService } from '../../services/lobby.service';
 
@@ -9,9 +10,8 @@ import { LobbyService } from '../../services/lobby.service';
 })
 export class DashboardComponent implements OnInit {
 
+  questions! : Question[];
   active = 0;
-  defaultMode : boolean = true;
-  customMode = false;
   tocken : string = '';
 
   constructor( private lobbyService: LobbyService) { }
@@ -19,20 +19,19 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.lobbyService.getToken().subscribe(data =>this.tocken = data);
 
+
   }
 
-  selectDefault(param:boolean): void{
-    this.defaultMode = true;
-    this.customMode = false;
+  getEasyMode():void{
+    this.lobbyService.getEasyQuestion(this.tocken).subscribe(data => {
+      this.questions = data;
+      console.log(this.questions)
+    });
   }
 
-  selectCustom(param:boolean): void{
-    this.customMode = true;
-    this.defaultMode= false;
-  }
-
-  getMode():any{
-    this.lobbyService.getEasyQuestion(this.tocken).subscribe(data => console.log(data));
+  getHardMode():void{
+    this.lobbyService.getHardQuestion(this.tocken).subscribe(data => this.questions = data);
+    console.log(this.questions);
   }
 
 }
