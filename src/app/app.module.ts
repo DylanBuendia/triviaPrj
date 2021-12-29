@@ -10,6 +10,7 @@ import { TermsComponent } from './modules/home/pages/terms/terms.component';
 import { PrivacyComponent } from './modules/home/pages/privacy/privacy.component';
 import { AboutusComponent } from './modules/home/pages/aboutus/aboutus.component';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     NgbModule
   ],
   providers: [],
