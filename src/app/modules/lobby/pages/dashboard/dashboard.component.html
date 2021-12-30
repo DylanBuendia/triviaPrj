@@ -3,7 +3,7 @@
 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs align-self-center w-50">
 
   <li [ngbNavItem]="0" class="d-flex flex-column ">
-    <a ngbNavLink class="nav-link" [ngClass]="{'border-primary': !active, 'bg-primary':!active, 'text-white':!active, 'border-white': active, 'bg-white': active}">Default Mode</a>
+    <a ngbNavLink class="nav-link text-white" [ngClass]="{'border-primary': !active, 'bg-primary':!active,  'border-white': active, 'bg-info': active}">Default Mode</a>
 
     <ng-template ngbNavContent>
       <div class="d-flex justify-content-center">
@@ -27,7 +27,7 @@
     </ng-template>
   </li>
   <li [ngbNavItem]="1">
-    <a ngbNavLink class="" [ngClass]="{'border-primary': active, 'bg-primary':active, 'text-white':active, 'border-white': !active, 'bg-white': !active}">Custom Mode</a>
+    <a ngbNavLink class="text-white" [ngClass]="{'border-primary': active, 'bg-primary':active, 'border-white': !active, 'bg-info': !active}">Custom Mode</a>
     <ng-template ngbNavContent>
       <form  class="mb-5">
         <div class="row g-3">
