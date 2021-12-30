@@ -1,6 +1,12 @@
 .container{
   background-color: #9adf9f;;
 }
-.nav-item:hover{
-  background-color: #8ada90;
+.nav-item:hover .nav-link{
+  background-color: #a86c5d;
+ color: #013033!important;
+ border-radius: 5px;
+}
+
+.nav-link{
+  color: whitesmoke!important;
 }
