@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http'
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbNav } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './modules/home/pages/home/home.component';
 import { FooterComponent } from './modules/home/components/footer/footer.component';
 import { TermsComponent } from './modules/home/pages/terms/terms.component';
@@ -20,11 +22,13 @@ import { FormsModule } from '@angular/forms';
     TermsComponent,
     PrivacyComponent,
     AboutusComponent,
-    HeaderComponent
+    HeaderComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     NgbModule
   ],
