@@ -4,6 +4,47 @@ a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-prima
  .bg-primary{
   background-color: #016166 !important;
  }
- .border-primary{
-  background-color: #016166 !important;
+ .bg-info{
+  background-color:  #2f9499 !important;
  }
+
+ .bg-inactive{
+  background-color:  #01616694 !important;
+ }
+ .border-primary, .border-primary:focus  {
+  border-color: #016166 !important;
+ }
+ .border-info{
+  border-color: #2f9499 !important;
+
+ }
+
+ header{
+  height: 15vh;
+  background-color: #016166;
+}
+
+#userName{
+  background-color: #2f9499;
+  border: 2px solid #a86c5d;
+}
+
+#centraBox{
+  color: transparent;
+
+  width: 80vw;
+  height: 60vh;
+}
+
+button{
+ color: #016166;
+ background-color: #a86c5d;
+
+}
+.title-form{
+color:#a86c5d;
+}
+// form{
+//   width: 75vw;
+//   height: 40vh;
+// }

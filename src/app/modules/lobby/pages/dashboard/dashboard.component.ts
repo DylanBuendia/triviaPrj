@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { Question } from 'src/app/models/interfaces/trivia.models';
+import { StoreService } from 'src/app/services/store.service';
+import { NgForm } from '@angular/forms';
 
 import { LobbyService } from '../../services/lobby.service';
 
@@ -11,27 +14,29 @@ import { LobbyService } from '../../services/lobby.service';
 export class DashboardComponent implements OnInit {
 
   questions! : Question[];
-  active = 0;
-  tocken : string = '';
+  tab = 1;
+  categories!:string[];
 
-  constructor( private lobbyService: LobbyService) { }
+  constructor( private lobbyService: LobbyService, private store:StoreService) { }
 
   ngOnInit(): void {
-    this.lobbyService.getToken().subscribe(data =>this.tocken = data);
-
+    this.lobbyService.getCategory().subscribe( e=> this.categories = e)
 
   }
 
   getEasyMode():void{
-    this.lobbyService.getEasyQuestion(this.tocken).subscribe(data => {
+    this.lobbyService.getEasyQuestion(this.store.credentials.token).subscribe(data => {
       this.questions = data;
-      console.log(this.questions)
+      console.log(this.store.credentials)
     });
   }
 
   getHardMode():void{
-    this.lobbyService.getHardQuestion(this.tocken).subscribe(data => this.questions = data);
+    this.lobbyService.getHardQuestion(this.store.credentials.token).subscribe(data => this.questions = data);
     console.log(this.questions);
   }
 
+submitCustom(f: NgForm){
+  console.log(f);
+}
 }

@@ -1,58 +1,91 @@
-<div class="d-flex flex-column vh-100">
+<header></header>
+<div style="height: 85vh; width: 100vw; background-color: #2f9499;" class="d-flex justify-content-center align-items-center">
+  <div class="d-flex position-absolute">
+    <div id="centraBox" class="d-flex justify-content-between rounded text-white">
+      <div class="d-flex flex-column w-100 align-items-center">
 
-<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs align-self-center w-50">
+        <ul ngbNav #nav="ngbNav" [(activeId)]="tab" class="nav-tabs align-self-center w-100" style="border: none;">
 
-  <li [ngbNavItem]="0" class="d-flex flex-column ">
-    <a ngbNavLink class="nav-link text-white" [ngClass]="{'border-primary': !active, 'bg-primary':!active,  'border-white': active, 'bg-info': active}">Default Mode</a>
+          <li [ngbNavItem]="0" class="d-flex flex-column">
+            <a ngbNavLink class="nav-link text-white w-100" [ngClass]="{'border-primary': !tab, 'bg-primary':!tab,  'border-info': tab, 'bg-inactive': tab}">Default Mode</a>
 
-    <ng-template ngbNavContent>
-      <div class="d-flex justify-content-center">
+            <ng-template ngbNavContent>
+              <div class="d-flex h-100" style="width: 75vw;">
+                <div class="card mb-3 mr-2 w-100 border-0">
+                  <div class="card-header text-white" style="background-color: #2f9499 ;"><h5 class="card-title">Easy mode</h5></div>
+                  <div class="card-body bg-info">
+                    <p>description: 10 easy questions bla bla bla</p>
+                    <button type="button" class="btn btn-success" (click)='getEasyMode()'>Start game</button>
+                  </div>
+                </div>
 
-        <div class="card mb-3 mr-2" style="max-width: 15rem;">
-          <div class="card-header text-white bg-success"><h5 class="card-title">Easy mode</h5></div>
-          <div class="card-body">
-            <p>description: 10 easy questions bla bla bla</p>
-            <button type="button" class="btn btn-success" (click)='getEasyMode()'>Start game</button>
-          </div>
-        </div>
+                <div class="card mb-3 ml-2 w-100 border-0">
+                  <div class="card-header text-white" style="background-color: #804b36;" ><h5 class="card-title">Hard mode</h5></div>
+                  <div class="card-body bg-info">
+                    <p>description: 15 hard questions bla bla bla</p>
+                    <button type="button" class="btn btn-danger" (click)='getHardMode()'>Start game</button>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="1">
+            <a ngbNavLink class="text-white" [ngClass]="{'border-primary': tab, 'bg-primary':tab, 'border-info': !tab, 'bg-inactive': !tab}">Custom Mode</a>
+            <ng-template ngbNavContent class="d-flex  align-items-center">
+              <form  #custom="ngForm" class="bg-info rounded py-3 px-5"  (ngSubmit)="submitCustom(custom)">
+                <h2 class="pt-0 mt-0">Customize your match</h2>
+                <div class="form-row">
+                  <div class="col-12 form-group">
+                    <label for="categories" class="form-label">Category</label>
+                    <select class="form-select form-control" name="category" required ngModel #categoryField="ngModel">
+                      <option selected value="">Any</option>
+                      <option *ngFor="let category of categories" value="{{category}}">{{category}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-auto  form-group">
+                    <label for="number" class="form-label">Number of questions:</label>
+                    <input type="number" class="form-control" name="questions" required ngModel #numField="ngModel">
+                  </div>
+                  <div class="col-auto  form-group">
+                    <label for="difficulty" class="form-label">Difficulty</label>
+                    <select class="form-select form-control" name="difficulty" required ngModel #difficultyField="ngModel">
+                      <option selected value="">Any</option>
+                      <option value="easy">Easy</option>
+                      <option value="medium">Medium</option>
+                      <option value="hard">Hard</option>
+                    </select>
+                  </div>
 
-        <div class="card mb-3 ml-2" style="max-width: 15rem;">
-          <div class="card-header  text-white bg-danger"><h5 class="card-title">Hard mode</h5></div>
-          <div class="card-body">
-            <p>description: 15 hard questions bla bla bla</p>
-            <button type="button" class="btn btn-danger" (click)='getHardMode()'>Start game</button>
-          </div>
-        </div>
+                    <fieldset class="form-group ml-2">
+                      <legend class="col-form-label  pt-0">Types</legend>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline1" name="type" ngModel #typeField1="ngModel" class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline1">Any Type</label>
+                      </div>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline2" name="type" ngModel #typeField2="ngModel" class="custom-control-input" value="multiple">
+                        <label class="custom-control-label" for="customRadioInline2">Multiple Choices</label>
+                      </div>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline3" name="type" ngModel #typeField3="ngModel" class="custom-control-input" value="boolean">
+                        <label class="custom-control-label" for="customRadioInline3">True/False</label>
+                      </div>
+                    </fieldset>
+                </div>
+                <div class="form-row">
+                  <button type="submit" class="btn mx-auto mt-3">Start game</button>
+                </div>
+              </form>
+            </ng-template>
+          </li>
+        </ul>
+
+        <div [ngbNavOutlet]="nav" class="p-3 d-flex justify-content-center align-items-center mx-auto bg-primary h-100 w-100 rounded-bottom"></div>
+
       </div>
-    </ng-template>
-  </li>
-  <li [ngbNavItem]="1">
-    <a ngbNavLink class="text-white" [ngClass]="{'border-primary': active, 'bg-primary':active, 'border-white': !active, 'bg-info': !active}">Custom Mode</a>
-    <ng-template ngbNavContent>
-      <form  class="mb-5">
-        <div class="row g-3">
-          <div class="col-6">
-            <label for="number" class="form-label">Number of questions:</label>
-            <input type="number" class="form-control" name="questions" required ngModel #numField="ngModel">
-          </div>
-        </div>
-        <div class="row g-3">
-          <div class="col-6">
-            <label for="difficulty" class="form-label">Difficulty</label>
-            <select class="form-select" name="difficulty" required ngModel #difficultyField="ngModel">
-              <option value="1">Easy</option>
-              <option value="2">Medium</option>
-              <option value="3">Hard</option>
-            </select>
-          </div>
-        </div>
-        </form>
-    </ng-template>
-  </li>
-</ul>
 
-<div [ngbNavOutlet]="nav" class="p-3 w-50 mx-auto bg-primary"></div>
-
-<!-- <pre>Active: {{ active }}</pre> -->
-
-</div>
+    </div>
+    </div>
+    </div>
