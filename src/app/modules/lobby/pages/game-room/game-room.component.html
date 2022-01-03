@@ -1,1 +1,8 @@
-<p>game-room works!</p>
+<div *ngIf="questions">
+  <h3>{{questions[this.index].category}}</h3>
+  <h3>{{questions[this.index].question}}</h3>
+  <button class="btn btn-warning"  (click)="checkAnswer(answer)" *ngFor=" let answer of questions[this.index].answers; index as i">
+     {{answer}}</button>
+  {{+this.score}}
+</div>
+
