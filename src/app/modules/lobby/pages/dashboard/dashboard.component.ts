@@ -14,7 +14,7 @@ import { LobbyService } from '../../services/lobby.service';
 })
 export class DashboardComponent implements OnInit {
 
-  tab = 1;
+  tab = 0;
   categories!:ICategory[];
 
   customForm = {
