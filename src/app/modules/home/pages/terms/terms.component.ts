@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ITermsBtn, ITermsContent } from 'src/app/models/interfaces/terms';
+import { TERMSBUTTON } from 'src/app/models/mock/terms-mock';
+import { TermsService } from '../../services/terms.service';
 
 @Component({
   selector: 'game-terms',
@@ -6,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./terms.component.scss']
 })
 export class TermsComponent implements OnInit {
+  buttons:ITermsBtn[] = [];
+  contents!: ITermsContent[];
+  selectedContent!: ITermsContent;
 
-  constructor() { }
+  constructor(public TService: TermsService) { }
 
   ngOnInit(): void {
+    this.buttons = this.TService.getButton()
   }
 
+  assignSelectContent(param:number): ITermsContent {
+   return this.selectedContent = this.TService.selectContent(param)
+  }
 }

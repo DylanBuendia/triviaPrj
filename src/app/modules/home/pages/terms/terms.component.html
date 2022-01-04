@@ -1,1 +1,27 @@
-<p>terms works!</p>
+<header></header>
+<div style="height: 85vh; width: 100vw; background-color: #2f9499;" class="d-flex justify-content-center align-items-center">
+  <div class="d-flex position-absolute">
+    <div id="centraBox">
+        <div class="container">
+          <h1 class="title"><strong>TERMINI DI SERVIZIO</strong></h1>
+            <div class="d-flex">
+              <div class="d-flex buttons">
+                <div class="d-flex flex-column">
+                  <button *ngFor="let button of buttons" style="width: 200px;" class="mt-5 pr-5" (click)="assignSelectContent(button.id)">{{ button.id }}. {{ button.label }}</button>
+                </div>
+              </div>
+
+              <div class="content">
+                <h3><strong>{{ selectedContent.title }}</strong></h3>
+                <p>{{ selectedContent.content }}</p>
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
