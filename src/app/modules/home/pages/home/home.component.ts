@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'game-home',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+
+
+  constructor(public store:StoreService) { }
+
+  saveUserName(param:string){
+    this.store.name = param;
+  }
 
   ngOnInit(): void {
   }

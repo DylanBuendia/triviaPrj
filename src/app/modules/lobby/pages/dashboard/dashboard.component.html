@@ -1,1 +1,58 @@
-<p>dashboard works!</p>
+<div class="d-flex flex-column vh-100">
+
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs align-self-center w-50">
+
+  <li [ngbNavItem]="0" class="d-flex flex-column ">
+    <a ngbNavLink class="nav-link text-white" [ngClass]="{'border-primary': !active, 'bg-primary':!active,  'border-white': active, 'bg-info': active}">Default Mode</a>
+
+    <ng-template ngbNavContent>
+      <div class="d-flex justify-content-center">
+
+        <div class="card mb-3 mr-2" style="max-width: 15rem;">
+          <div class="card-header text-white bg-success"><h5 class="card-title">Easy mode</h5></div>
+          <div class="card-body">
+            <p>description: 10 easy questions bla bla bla</p>
+            <button type="button" class="btn btn-success" (click)='getEasyMode()'>Start game</button>
+          </div>
+        </div>
+
+        <div class="card mb-3 ml-2" style="max-width: 15rem;">
+          <div class="card-header  text-white bg-danger"><h5 class="card-title">Hard mode</h5></div>
+          <div class="card-body">
+            <p>description: 15 hard questions bla bla bla</p>
+            <button type="button" class="btn btn-danger" (click)='getHardMode()'>Start game</button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="1">
+    <a ngbNavLink class="text-white" [ngClass]="{'border-primary': active, 'bg-primary':active, 'border-white': !active, 'bg-info': !active}">Custom Mode</a>
+    <ng-template ngbNavContent>
+      <form  class="mb-5">
+        <div class="row g-3">
+          <div class="col-6">
+            <label for="number" class="form-label">Number of questions:</label>
+            <input type="number" class="form-control" name="questions" required ngModel #numField="ngModel">
+          </div>
+        </div>
+        <div class="row g-3">
+          <div class="col-6">
+            <label for="difficulty" class="form-label">Difficulty</label>
+            <select class="form-select" name="difficulty" required ngModel #difficultyField="ngModel">
+              <option value="1">Easy</option>
+              <option value="2">Medium</option>
+              <option value="3">Hard</option>
+            </select>
+          </div>
+        </div>
+        </form>
+    </ng-template>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="p-3 w-50 mx-auto bg-primary"></div>
+
+<!-- <pre>Active: {{ active }}</pre> -->
+
+</div>

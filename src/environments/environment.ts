@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'https://opentdb.com/api.php?',
+  categoryUrl: 'https://opentdb.com/api_category.php',
+  tokenUrl: 'https://opentdb.com/api_token.php?'
 };
 
 /*
