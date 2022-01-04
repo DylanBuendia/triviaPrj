@@ -1,1 +1,23 @@
-<p>privacy works!</p>
+<header></header>
+
+<div style="height: 85vh; width: 100vw; background-color: #2f9499;"
+    class="d-flex justify-content-center align-items-center">
+    <div class="d-flex position-absolute">
+        <div id="centraBox">
+            <div class="container">
+                <p class="title"><strong>PRIVACY</strong></p>
+
+                <div class="d-flex buttons">
+                    <div class="d-flex flex-column">
+                        <button class="btn" *ngFor="let button of buttons" (click)="selectDescription(button.id)"><strong>{{ button.id }}.{{ button.label }}</strong></button>
+                    </div>
+
+                    <div class="content">
+                        <p><strong>{{ content.title }}</strong></p>
+                        <p>{{ content.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
