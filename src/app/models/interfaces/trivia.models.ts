@@ -45,7 +45,7 @@ export class Question{
       question.category,
       question.type,
       question.question,
-      [...question.incorrect_answers, question.correct_answer],
+      [...question.incorrect_answers, question.correct_answer].sort(()=>{ return Math.random()-0.5}),
       question.correct_answer,
       question.difficulty
 
