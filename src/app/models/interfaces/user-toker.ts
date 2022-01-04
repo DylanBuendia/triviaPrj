@@ -1,4 +1,5 @@
 export interface IUserToken{
   userName: string,
-  token: string
+  token: string,
+  score: number
 }

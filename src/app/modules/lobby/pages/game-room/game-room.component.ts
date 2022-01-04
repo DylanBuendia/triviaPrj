@@ -13,7 +13,8 @@ export class GameRoomComponent implements OnInit {
 
   questions!:Question[];
 
-  score:number = 0;
+  triviaName! : string;
+  userScore: boolean = false;
 
   index:number= 0;
 
@@ -23,14 +24,18 @@ export class GameRoomComponent implements OnInit {
     this.lobbyService.questions$.subscribe(data =>{
       this.questions = data
       console.log(this.questions)
-    })
+    });
+    this.triviaName = this.store.credentials.userName;
+
   }
 
   checkAnswer(param:string){
     if(param == this.questions[this.index].correctAnswer){
-      this.score ++;
+      this.store.credentials.score ++;
       console.log(this.questions[this.index].correctAnswer)
       console.log(param);
+    }else if (this.index == this.questions.length){
+      this.userScore = true;
     }
     this.index++;
    }
