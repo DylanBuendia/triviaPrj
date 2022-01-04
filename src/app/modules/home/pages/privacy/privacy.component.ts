@@ -11,7 +11,6 @@ import { PrivacyService } from '../../services/privacy.service';
 export class PrivacyComponent implements OnInit {
 
   buttons!: IPrivacyButton[];
-  descriptions!:IPrivacyDescription[];
   content!:IPrivacyDescription;
 
 
@@ -19,16 +18,15 @@ export class PrivacyComponent implements OnInit {
   constructor(private readonly privacyService:PrivacyService ) { }
 
   ngOnInit(): void {
-    this.privacyService.showButtons().subscribe(response => { 
-      this.buttons = response;
-      console.log(this.buttons);
-    });
+    this.privacyService.showButtons()
+    .subscribe(response => this.buttons = response);
     this.selectDescription(1);
 
   }
 
-  selectDescription(param:number= 1) {
-    return this.privacyService.getDescription(param).subscribe(response => this.content = response )
+  selectDescription(param:number) {
+    return this.privacyService.getDescription(param)
+    .subscribe(response => this.content = response );
   }
 
 }

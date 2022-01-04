@@ -22,12 +22,10 @@ export class PrivacyService {
     return this.buttonsSubject;
   }
 
-  showDescription():Observable<IPrivacyDescription[]> {
-    return this.descriptionsSubject;
-  }
-
   getDescription(param:number):Observable<IPrivacyDescription> {
-    return this.descriptionsSubject.pipe(map(response => response.find(description => description.id === param))) as Observable<IPrivacyDescription>
+    return this.descriptionsSubject.pipe
+    (map(response => 
+      response.find(description => description.id === param))) as Observable<IPrivacyDescription>
   }
 
 
