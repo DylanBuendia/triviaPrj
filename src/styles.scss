@@ -2,3 +2,54 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+@font-face {
+  font-family: 'Gochi Hand', cursive ;
+  src: url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Gochi Hand', cursive ;
+  font-size:large;
+  font-variant-caps:all-small-caps;
+}
+
+
+a.bg-primary:hover, a.bg-primary:focus, button.bg-primary:hover, button.bg-primary:focus {
+  background-color: #016166 !important;
+}
+ .bg-primary{
+  background-color: #016166 !important;
+ }
+ .bg-info{
+  background-color:  #2f9499 !important;
+ }
+
+ .bg-inactive{
+  background-color:  #01616694 !important;
+ }
+ .border-primary, .border-primary:focus  {
+  border-color: #016166 !important;
+ }
+ .border-info{
+  border-color: #2f9499 !important;
+
+ }
+
+ body{
+  background: linear-gradient(
+200deg,rgba(1, 97, 102) 0%,rgba( 47, 148, 153) 100%);
+    background-image: linear-gradient(
+200deg, rgb(1, 97, 102) 0%, rgb( 47, 148, 153) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+ }
