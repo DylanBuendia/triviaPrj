@@ -17,6 +17,7 @@ export class TermsComponent implements OnInit {
 
   ngOnInit(): void {
     this.buttons = this.TService.getButton()
+    this.assignSelectContent(1)
   }
 
   assignSelectContent(param:number): ITermsContent {
