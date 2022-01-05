@@ -20,22 +20,13 @@ export class StoreService {
 
   constructor(private readonly http: HttpClient) { }
 
-  // getToken():void{
-  //   const params = new HttpParams().set('command', 'request')
-
-  //   this.http.get<any>(`${environment.tokenUrl}`, {params})
-  //  .pipe(
-  //   map(response => response.token)
-  //  ).subscribe(e=> this.credentials.token = e)
-  // }
-
-  getToken(){
+  getToken():void{
     const params = new HttpParams().set('command', 'request')
 
-    return this.http.get<any>(`${environment.tokenUrl}`, {params})
-    .pipe(
+    this.http.get<any>(`${environment.tokenUrl}`, {params})
+   .pipe(
     map(response => response.token)
-    ).subscribe(res =>this.credentials.token = res)
+   ).subscribe(e=> this.credentials.token = e)
   }
 
   getCredentials(): Observable<IUserToken>{
@@ -46,11 +37,5 @@ export class StoreService {
     return this.credentials$.pipe(
     map(res => res.userName = name))
   }
-
-  // addToken(token:string): Observable<string>{
-  //  return this.getToken().pipe(
-  //     map(res=> res.token = token)
-  //   )
-  // }
 
 }
