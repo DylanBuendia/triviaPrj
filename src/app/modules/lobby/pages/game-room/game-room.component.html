@@ -10,10 +10,16 @@
             {{answer}}</button>
         </div>
       </div>
-      <ng-template #boardscore >
-        <h2>{{triviaName}} hai totalizzato {{score}} </h2>
-        <h2 routerLink="/leaderboard">vai alla classifica!</h2>
+
+      <ng-template #boardscore>
+        <div *ngIf="triviaCredentials$ |async as credentials" class="shadow border border-info rounded-lg p-3">
+          <h1 class="text-center text-danger">{{credentials.userName}} </h1>
+          <h4 class="text-center">hai totalizzato</h4>
+          <h2 class="text-center">{{credentials.score}} pt.</h2>
+          <button type="button" class="btn mx-auto">Show the Leader-Board </button>
+        </div>
       </ng-template>
+
     </div>
     </div>
     </div>

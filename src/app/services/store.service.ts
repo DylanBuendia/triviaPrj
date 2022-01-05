@@ -1,6 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { map, Observable, BehaviorSubject } from 'rxjs';
+
 import { environment } from 'src/environments/environment';
 import { IUserToken } from '../models/interfaces/user-toker';
 
@@ -15,6 +17,8 @@ export class StoreService {
     score :0
   }
 
+  private credentialsSubject = new BehaviorSubject<IUserToken>(this.credentials);
+  public credentials$ = this.credentialsSubject.asObservable();
 
   constructor(private readonly http: HttpClient) { }
 
@@ -27,5 +31,14 @@ export class StoreService {
    ).subscribe(e=> this.credentials.token = e)
   }
 
+
+  getCredentials(): Observable<IUserToken>{
+    return this.credentials$;
+  }
+
+  addUserName(name:string):  Observable<string>{
+    return this.credentials$.pipe(
+    map(res => res.userName = name))
+  }
 
 }
