@@ -1,6 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+
+import { map, Observable, BehaviorSubject } from 'rxjs';
+
 import { environment } from 'src/environments/environment';
 import { IUserToken } from '../models/interfaces/user-toker';
 
@@ -28,6 +30,7 @@ export class StoreService {
     map(response => response.token)
    ).subscribe(e=> this.credentials.token = e)
   }
+
 
   getCredentials(): Observable<IUserToken>{
     return this.credentials$;

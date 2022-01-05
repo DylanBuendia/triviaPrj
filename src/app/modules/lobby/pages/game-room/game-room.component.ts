@@ -14,6 +14,7 @@ export class GameRoomComponent implements OnInit {
 
     questions!:Question[];
 
+
     triviaCredentials$! : Observable<IUserToken>;
     userScore: boolean = false;
     score: number =0;
@@ -21,6 +22,7 @@ export class GameRoomComponent implements OnInit {
     index:number= 0;
 
     constructor(private lobbyService: LobbyService, private store:  StoreService) { }
+
 
     ngOnInit(): void {
       this.lobbyService.questions$.subscribe(data =>{
