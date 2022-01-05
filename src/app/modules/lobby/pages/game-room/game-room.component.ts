@@ -43,7 +43,10 @@ export class GameRoomComponent implements OnInit {
         this.userScore = true;
         this.triviaCredentials$.subscribe(data => this.credential = data);
         this.store.postLeaderboard(this.credential).subscribe(data => console.log(data));
+      }
 
+      if(this.index == 0){
+        this.store.credentials.score = 0;
       }
       this.index++
     }
