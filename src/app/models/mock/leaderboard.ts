@@ -1,7 +1,6 @@
-import { markAsUntransferable } from "worker_threads";
 import { IUserToken } from "../interfaces/user-toker";
 
-const leaderBoard: IUserToken[] = [
+export const leaderBoard: IUserToken[] = [
 {userName:'mark',
 token:"aa",
 score:10 },

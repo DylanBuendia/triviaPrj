@@ -1,8 +1,8 @@
 <div style="height: 85vh; width: 100vw;" class="d-flex justify-content-center align-items-center">
   <div class="d-flex position-absolute">
-    <div id="centraBox" class="d-flex justify-content-center align-items-center rounded text-white">
+    <div id="centraBox" class="d-flex justify-content-center align-items-center rounded text-white" >
 
-      <div class="w-75" *ngIf="questions">
+      <div class="w-75" *ngIf="!userScore ; else boardscore">
         <h3 class="text-center my-5">{{questions[this.index].category}}</h3>
         <h3 class="text-center my-5">{{questions[this.index].question}}</h3>
         <div class="w-100 d-flex justify-content-center my-5">
@@ -10,10 +10,10 @@
             {{answer}}</button>
         </div>
       </div>
-      <ng-template *ngIf="userScore">
-        <h2>{{triviaName}} hai totalizzato </h2>
+      <ng-template #boardscore >
+        <h2>{{triviaName}} hai totalizzato {{score}} </h2>
+        <h2 routerLink="/leaderboard">vai alla classifica!</h2>
       </ng-template>
-
     </div>
     </div>
     </div>

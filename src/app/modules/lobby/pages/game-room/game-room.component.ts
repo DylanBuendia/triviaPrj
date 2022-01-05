@@ -15,6 +15,7 @@ export class GameRoomComponent implements OnInit {
 
   triviaName! : string;
   userScore: boolean = false;
+  score: number =0;
 
   index:number= 0;
 
@@ -31,13 +32,13 @@ export class GameRoomComponent implements OnInit {
 
   checkAnswer(param:string){
     if(param == this.questions[this.index].correctAnswer){
-      this.store.credentials.score ++;
-      console.log(this.questions[this.index].correctAnswer)
-      console.log(param);
-    }else if (this.index == this.questions.length){
+      this.score ++;
+    }
+
+    if(this.index == this.questions.length-1){
       this.userScore = true;
     }
-    this.index++;
-   }
+    this.index++
+  }
 
 }
