@@ -11,12 +11,7 @@ import { StoreService } from 'src/app/services/store.service';
 })
 export class HomeComponent implements OnInit {
 
-  // credentials$! : Observable<IUserToken>;
-
-  constructor(private store:StoreService, private lobby:LobbyService) {
-
-   }
-
+  constructor(private store:StoreService, private lobby:LobbyService) {}
 
   ngOnInit(): void {
   }

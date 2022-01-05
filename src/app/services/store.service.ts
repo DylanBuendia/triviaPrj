@@ -1,10 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { map, Observable, BehaviorSubject } from 'rxjs';
+import { tap,map, Observable, BehaviorSubject } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { IUserToken } from '../models/interfaces/user-toker';
+import { leaderBoard } from '../models/mock/leaderboard';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,8 @@ export class StoreService {
     token:'',
     score :0
   }
+
+  // leaderBoard!: IUserToken[];
 
   private credentialsSubject = new BehaviorSubject<IUserToken>(this.credentials);
   public credentials$ = this.credentialsSubject.asObservable();
@@ -31,7 +34,6 @@ export class StoreService {
    ).subscribe(e=> this.credentials.token = e)
   }
 
-
   getCredentials(): Observable<IUserToken>{
     return this.credentials$;
   }
@@ -40,5 +42,16 @@ export class StoreService {
     return this.credentials$.pipe(
     map(res => res.userName = name))
   }
+
+  getLeaderboard(): Observable<IUserToken[]>{
+    return this.http.get<IUserToken[]>('http://localhost:3000/leaderboard');
+  }
+
+  postLeaderboard( param:IUserToken):Observable<IUserToken>{
+    const userToAdd = {...param}
+    console.log(userToAdd)
+    return this.http.post<IUserToken>('http://localhost:3000/leaderboard', userToAdd);
+  }
+
 
 }

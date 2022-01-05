@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IUserToken } from 'src/app/models/interfaces/user-toker';
 import { leaderBoard } from 'src/app/models/mock/leaderboard';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'game-leaderboard',
@@ -9,15 +10,14 @@ import { leaderBoard } from 'src/app/models/mock/leaderboard';
 })
 export class LeaderboardComponent implements OnInit {
 
-  leaderboard: IUserToken[] = leaderBoard.sort( function(a,b){
-    return b.score - a.score
-  });
+  leaderboard!: IUserToken[];
 
-  constructor() { }
+  constructor(private store:StoreService) { }
 
   ngOnInit(): void {
-    console.log(this.leaderboard);
-
+    this.store.getLeaderboard().subscribe(data => this.leaderboard = data.sort( function(a:IUserToken,b:IUserToken){
+      return b.score - a.score
+    }))
   }
 
 }

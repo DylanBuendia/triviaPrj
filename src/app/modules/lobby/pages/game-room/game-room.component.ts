@@ -14,11 +14,12 @@ export class GameRoomComponent implements OnInit {
 
     questions!:Question[];
 
+    credential!:IUserToken;
 
     triviaCredentials$! : Observable<IUserToken>;
-    userScore: boolean = false;
-    score: number =0;
 
+    userScore: boolean = false;
+    // score: number =0;
     index:number= 0;
 
     constructor(private lobbyService: LobbyService, private store:  StoreService) { }
@@ -40,6 +41,9 @@ export class GameRoomComponent implements OnInit {
 
       if(this.index == this.questions.length-1){
         this.userScore = true;
+        this.triviaCredentials$.subscribe(data => this.credential = data);
+        this.store.postLeaderboard(this.credential).subscribe(data => console.log(data));
+
       }
       this.index++
     }
