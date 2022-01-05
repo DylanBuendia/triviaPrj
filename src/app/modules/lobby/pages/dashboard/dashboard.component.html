@@ -1,4 +1,6 @@
-<div style="height: 85vh; width: 100vw; background-color: #2f9499;" class="d-flex justify-content-center align-items-center">
+
+
+<div style="height: 85vh; width: 100vw;" class="d-flex justify-content-center align-items-center">
   <div class="d-flex position-absolute">
     <div id="centraBox" class="d-flex justify-content-between rounded text-white">
       <div class="d-flex flex-column w-100 align-items-center">
@@ -13,7 +15,7 @@
                 <div class="card mb-3 mr-2 w-100 border-0">
                   <div class="card-header text-white" style="background-color: #2f9499 ;"><h5 class="card-title">Easy mode</h5></div>
                   <div class="card-body bg-info">
-                    <p>description: 10 easy questions bla bla bla</p>
+                    <p>description: 10 easy questions</p>
                     <button type="button" class="btn btn-success" (click)='getEasyMode()' routerLink="gameroom">Start game</button>
                   </div>
                 </div>
@@ -21,7 +23,7 @@
                 <div class="card mb-3 ml-2 w-100 border-0">
                   <div class="card-header text-white" style="background-color: #804b36;" ><h5 class="card-title">Hard mode</h5></div>
                   <div class="card-body bg-info">
-                    <p>description: 15 hard questions bla bla bla</p>
+                    <p>description: 15 hard questions</p>
                     <button type="button" class="btn btn-danger" (click)='getHardMode()' routerLink="gameroom">Start game</button>
                   </div>
                 </div>
@@ -60,7 +62,7 @@
                     <fieldset class="form-group ml-2">
                       <legend class="col-form-label  pt-0">Types</legend>
                       <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline1" name="type" [(ngModel)]="customForm.type" ngModel #typeField1="ngModel" class="custom-control-input">
+                        <input type="radio" id="customRadioInline1" name="type" [(ngModel)]="customForm.type" ngModel #typeField1="ngModel" class="custom-control-input" value="">
                         <label class="custom-control-label" for="customRadioInline1">Any Type</label>
                       </div>
                       <div class="custom-control custom-radio custom-control-inline">

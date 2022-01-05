@@ -1,13 +1,11 @@
-<header></header>
-
-<div style="height: 85vh; width: 100vw; background-color: #2f9499;"
+<div style="height: 85vh; width: 100vw;"
     class="d-flex justify-content-center align-items-center">
     <div class="d-flex position-absolute">
-        <div id="centraBox">
-            <div class="container">
+        <div id="centraBox" class="d-flex justify-content-center pt-5 px-4">
+            <div class=" h-75 w-100">
                 <p class="title"><strong>PRIVACY</strong></p>
 
-                <div class="d-flex buttons">
+                <div class="d-flex buttons" style="height: 90%;">
                     <div class="d-flex flex-column">
                         <button class="btn" *ngFor="let button of buttons" (click)="selectDescription(button.id)"><strong>{{ button.id }}.{{ button.label }}</strong></button>
                     </div>
@@ -18,6 +16,7 @@
                     </div>
                 </div>
             </div>
+            <game-footer class="w-100" style="position: absolute; bottom: 0;"></game-footer>
         </div>
     </div>
 </div>

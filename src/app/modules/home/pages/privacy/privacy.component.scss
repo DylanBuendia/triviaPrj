@@ -1,25 +1,19 @@
-header {
-    height: 15vh;
-    background-color: #016166;
-}
-  
 #userName {
     background-color: #2f9499;
     border: 2px solid #a86c5d;
 }
-  
+
 #centraBox {
     color: whitesmoke;
     background-color: #016166;
     width: 80vw;
     height: 60vh;
-    border: 2px solid #018574;
 }
 
 .container {
     font-size: calc(2vmin + .2rem);
 }
-  
+
 .btn {
    color: #016166;
    background-color: #a86c5d;
@@ -29,11 +23,11 @@ header {
    font-size: calc(2vmin + .2rem);
    padding: 1vmin 1vmax;
 }
- 
+
 .btn:hover {
     color: unset!important;
 }
-        
+
 .title {
     font-family: "Black";
     font-size: calc(2vmin + .4rem);

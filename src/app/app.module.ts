@@ -13,6 +13,7 @@ import { PrivacyComponent } from './modules/home/pages/privacy/privacy.component
 import { AboutusComponent } from './modules/home/pages/aboutus/aboutus.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FormsModule } from '@angular/forms';
+import { LeaderboardComponent } from './shared/pages/leaderboard/leaderboard.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     PrivacyComponent,
     AboutusComponent,
     HeaderComponent,
+    LeaderboardComponent,
 
   ],
   imports: [
