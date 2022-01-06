@@ -17,24 +17,6 @@
       "userName": "tony",
       "token": "aa",
       "score": 7
-    },
-    {
-      "userName": "Marcus",
-      "token": "af9a28ba24369a948df35940a7a99de621870af528bdb01faeda6ca066f1f398",
-      "score": 3,
-      "id": 4
-    },
-    {
-      "userName": "Marcus",
-      "token": "8d684a6e43ae3aed9b2004a597d010bb54e4af8ee309f29b4d9e3ad6ccf503bb",
-      "score": 3,
-      "id": 5
-    },
-    {
-      "userName": "gino",
-      "token": "4bd53c4357df388beeaf9a85389c7b3ad53aad21d3b855d868c6233637eef079",
-      "score": 2,
-      "id": 6
     }
   ]
 }
