@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IUserToken } from 'src/app/models/interfaces/user-toker';
-import { leaderBoard } from 'src/app/models/mock/leaderboard';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -17,7 +16,8 @@ export class LeaderboardComponent implements OnInit {
   ngOnInit(): void {
     this.store.getLeaderboard().subscribe(data => this.leaderboard = data.sort( function(a:IUserToken,b:IUserToken){
       return b.score - a.score
-    }))
+    }));
+    this.store.resetCredential();
   }
 
 }

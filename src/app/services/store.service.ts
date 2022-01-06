@@ -5,7 +5,6 @@ import { tap,map, Observable, BehaviorSubject } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { IUserToken } from '../models/interfaces/user-toker';
-import { leaderBoard } from '../models/mock/leaderboard';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +16,6 @@ export class StoreService {
     token:'',
     score :0
   }
-
-  // leaderBoard!: IUserToken[];
 
   private credentialsSubject = new BehaviorSubject<IUserToken>(this.credentials);
   public credentials$ = this.credentialsSubject.asObservable();
@@ -53,5 +50,9 @@ export class StoreService {
     return this.http.post<IUserToken>('http://localhost:3000/leaderboard', userToAdd);
   }
 
-
+  resetCredential(){
+    this.credentials$.pipe(
+      map(res => {res.userName = '', res.score = 0, res.token = '' })
+    )
+  }
 }
