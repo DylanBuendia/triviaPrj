@@ -39,8 +39,7 @@ export class GameRoomComponent implements OnInit, OnDestroy {
 
     checkAnswer(param:string){
       if(param == this.questions[this.index].correctAnswer){
-        // this.store.credentials.score ++;
-        this.store.addScore().subscribe(data => console.log(data))
+          this.store.addScore();
       }
 
       if(this.index == this.questions.length-1){
@@ -48,14 +47,11 @@ export class GameRoomComponent implements OnInit, OnDestroy {
         this.subscriptionCred = this.triviaCredentials$.subscribe(data => this.credential = data);
         this.store.postLeaderboard(this.credential).subscribe(data => console.log(data));
       }
-
-      if(this.index == 0){
-        this.store.credentials.score = 0;
-      }
       this.index++
     }
 
     ngOnDestroy(): void {
+        this.store.resetCredentials();
         this.subscriptionCred.unsubscribe();
         this.subscriptionQuest.unsubscribe();
     }

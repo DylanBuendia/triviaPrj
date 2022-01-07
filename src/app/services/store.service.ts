@@ -11,7 +11,7 @@ import { IUserToken } from '../models/interfaces/user-toker';
 })
 export class StoreService {
 
-  credentials:IUserToken= {
+  private credentials:IUserToken= {
     userName:'',
     token:'',
     score :0
@@ -36,18 +36,21 @@ export class StoreService {
     return this.credentials$;
   }
 
-  addUserName(name:string):  Observable<string>{
-    return this.credentials$.pipe(
-    map(res => res.userName = name))
+  addUserName(name:string): void{
+    this.credentials.userName = name;
   }
 
-  addToken(token:string):Observable<string>{
-    return this.credentials$.pipe(
-      map(res => res.token = token))
+  addToken(token:string):void{
+   this.credentials.token=token
   }
-  addScore(): Observable<number>{
-    return this.credentials$.pipe(
-      map(res => res.score ++))
+  addScore():void{
+    this.credentials.score++;
+  }
+
+  resetCredentials(): void{
+    this.credentials.userName = '';
+    this.credentials.token = '';
+    this.credentials.score = 0
   }
 
   getLeaderboard(): Observable<IUserToken[]>{

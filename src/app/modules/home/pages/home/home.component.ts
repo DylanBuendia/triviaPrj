@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   }
 
   saveUserName(param:string){
-    this.store.addUserName(param).subscribe(x => console.log(x));
+    this.store.addUserName(param);
 
   }
 }

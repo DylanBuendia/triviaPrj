@@ -13,7 +13,7 @@ import { PrivacyComponent } from './modules/home/pages/privacy/privacy.component
 import { AboutusComponent } from './modules/home/pages/aboutus/aboutus.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FormsModule } from '@angular/forms';
-import { LeaderboardComponent } from './modules/leaderboard/leaderboard.component';
+import { LeaderboardComponent } from './modules/ranking/pages/leaderboard/leaderboard.component';
 
 @NgModule({
   declarations: [

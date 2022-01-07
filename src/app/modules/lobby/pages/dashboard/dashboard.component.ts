@@ -29,26 +29,25 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.lobbyService.getCategory().subscribe( data=> this.categories = data);
-    this.store.getToken().pipe(
-      concatMap(res => this.store.addToken(res))
-    ).subscribe(data => this.token = data)
+    this.store.getToken().subscribe(data => this.token = data)
 
   }
   getEasyMode():void{
+    this.store.addToken(this.token)
     this.lobbyService.getEasyQuestion(this.token);
     this.store.getCredentials().subscribe(res => console.log(res))
 
   }
 
   getHardMode():void{
-    this.lobbyService.getHardQuestion(this.token);
     this.store.addToken(this.token);
+    this.lobbyService.getHardQuestion(this.token);
   }
 
   getCustomMode():void{
-    this.lobbyService.getCustomQuestion(this.token, this.customForm.questions , this.customForm.difficulty, this.customForm.category, this.customForm.type);
     this.store.addToken(this.token);
-
+    this.lobbyService.getCustomQuestion(this.token, this.customForm.questions , this.customForm.difficulty, this.customForm.category, this.customForm.type);
+    this.store.getCredentials().subscribe(res => console.log(res))
   }
 
 }

@@ -4,7 +4,7 @@ import { AboutusComponent } from './modules/home/pages/aboutus/aboutus.component
 import { HomeComponent } from './modules/home/pages/home/home.component';
 import { PrivacyComponent } from './modules/home/pages/privacy/privacy.component';
 import { TermsComponent } from './modules/home/pages/terms/terms.component';
-import { LeaderboardComponent } from './modules/leaderboard/leaderboard.component';
+import { LeaderboardComponent } from './modules/ranking/pages/leaderboard/leaderboard.component';
 
 const routes: Routes = [
   { path: '', component:HomeComponent},
