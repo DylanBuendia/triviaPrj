@@ -38,7 +38,7 @@
                 <div class="form-row">
                   <div class="col-12 form-group">
                     <label for="categories" class="form-label">Category</label>
-                    <select [(ngModel)]="customForm.category" class="form-select form-control" name="category" required ngModel #categoryField="ngModel">
+                    <select [(ngModel)]="customForm.category" class="form-select form-control" name="category" required>
                       <option selected value="">Any</option>
                       <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
                     </select>
@@ -47,11 +47,11 @@
                 <div class="form-row">
                   <div class="col-auto  form-group">
                     <label for="number" class="form-label">Number of questions:</label>
-                    <input type="number" class="form-control" name="questions" required ngModel [(ngModel)]="customForm.questions" #numField="ngModel">
+                    <input type="number" class="form-control" name="questions" required [(ngModel)]="customForm.questions">
                   </div>
                   <div class="col-auto  form-group">
                     <label for="difficulty" class="form-label">Difficulty</label>
-                    <select class="form-select form-control" name="difficulty" required ngModel [(ngModel)]="customForm.difficulty" #difficultyField="ngModel">
+                    <select class="form-select form-control" name="difficulty" required ngModel [(ngModel)]="customForm.difficulty">
                       <option selected value="">Any</option>
                       <option value="easy">Easy</option>
                       <option value="medium">Medium</option>
@@ -62,15 +62,15 @@
                     <fieldset class="form-group ml-2">
                       <legend class="col-form-label  pt-0">Types</legend>
                       <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline1" name="type" [(ngModel)]="customForm.type" ngModel #typeField1="ngModel" class="custom-control-input" value="">
+                        <input type="radio" id="customRadioInline1" name="type" [(ngModel)]="customForm.type" class="custom-control-input" value="">
                         <label class="custom-control-label" for="customRadioInline1">Any Type</label>
                       </div>
                       <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline2" name="type" [(ngModel)]="customForm.type" ngModel #typeField2="ngModel" class="custom-control-input" value="multiple">
+                        <input type="radio" id="customRadioInline2" name="type" [(ngModel)]="customForm.type" class="custom-control-input" value="multiple">
                         <label class="custom-control-label" for="customRadioInline2">Multiple Choices</label>
                       </div>
                       <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline3" name="type" [(ngModel)]="customForm.type" ngModel #typeField3="ngModel" class="custom-control-input" value="boolean">
+                        <input type="radio" id="customRadioInline3" name="type" [(ngModel)]="customForm.type" class="custom-control-input" value="boolean">
                         <label class="custom-control-label" for="customRadioInline3">True/False</label>
                       </div>
                     </fieldset>

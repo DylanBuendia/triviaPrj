@@ -17,7 +17,6 @@ export class LeaderboardComponent implements OnInit {
     this.store.getLeaderboard().subscribe(data => this.leaderboard = data.sort( function(a:IUserToken,b:IUserToken){
       return b.score - a.score
     }));
-    this.store.resetCredential();
   }
 
 }

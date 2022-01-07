@@ -6,20 +6,6 @@ export enum Difficulty{
   hard = 'hard'
 }
 
-// export interface IQuestion{
-//   category : string;
-//   type : questionType;
-//   question : string;
-//   answers : string[];
-//   correctAnswer : string;
-//   difficulty : Difficulty;
-// }
-
-// export interface IResponse{
-//   response_code : number;
-//   results : IResult[]
-// }
-
 export interface IResult{
   category : string;
   type: questionType;
