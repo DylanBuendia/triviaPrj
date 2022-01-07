@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Question } from 'src/app/models/interfaces/trivia.models';
 import { LobbyService } from '../../services/lobby.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { StoreService } from 'src/app/services/store.service';
 import { IUserToken } from 'src/app/models/interfaces/user-toker';
 
@@ -10,7 +10,7 @@ import { IUserToken } from 'src/app/models/interfaces/user-toker';
   templateUrl: './game-room.component.html',
   styleUrls: ['./game-room.component.scss']
 })
-export class GameRoomComponent implements OnInit {
+export class GameRoomComponent implements OnInit, OnDestroy {
 
     questions!:Question[];
 
@@ -19,14 +19,17 @@ export class GameRoomComponent implements OnInit {
     triviaCredentials$! : Observable<IUserToken>;
 
     userScore: boolean = false;
-    // score: number =0;
+
     index:number= 0;
+
+    subscriptionCred! : Subscription;
+    subscriptionQuest! : Subscription;
 
     constructor(private lobbyService: LobbyService, private store:  StoreService) { }
 
 
     ngOnInit(): void {
-      this.lobbyService.questions$.subscribe(data =>{
+      this.subscriptionQuest = this.lobbyService.questions$.subscribe(data =>{
         this.questions = data
         console.log(this.questions)
       });
@@ -36,12 +39,13 @@ export class GameRoomComponent implements OnInit {
 
     checkAnswer(param:string){
       if(param == this.questions[this.index].correctAnswer){
-        this.store.credentials.score ++;
+        // this.store.credentials.score ++;
+        this.store.addScore().subscribe(data => console.log(data))
       }
 
       if(this.index == this.questions.length-1){
         this.userScore = true;
-        this.triviaCredentials$.subscribe(data => this.credential = data);
+        this.subscriptionCred = this.triviaCredentials$.subscribe(data => this.credential = data);
         this.store.postLeaderboard(this.credential).subscribe(data => console.log(data));
       }
 
@@ -49,6 +53,11 @@ export class GameRoomComponent implements OnInit {
         this.store.credentials.score = 0;
       }
       this.index++
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptionCred.unsubscribe();
+        this.subscriptionQuest.unsubscribe();
     }
 
 }

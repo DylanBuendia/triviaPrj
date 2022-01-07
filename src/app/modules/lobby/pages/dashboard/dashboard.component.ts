@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { concatMap } from 'rxjs/operators';
 import { Question } from 'src/app/models/interfaces/trivia.models';
 import { ICategory } from 'src/app/models/interfaces/category.models';
 import { StoreService } from 'src/app/services/store.service';
@@ -14,6 +14,7 @@ import { LobbyService } from '../../services/lobby.service';
 })
 export class DashboardComponent implements OnInit {
 
+  token! : string;
   tab = 0;
   categories!:ICategory[];
 
@@ -27,25 +28,27 @@ export class DashboardComponent implements OnInit {
   constructor( private lobbyService: LobbyService, private store:StoreService) { }
 
   ngOnInit(): void {
-    this.lobbyService.getCategory().subscribe( data=> this.categories = data)
+    this.lobbyService.getCategory().subscribe( data=> this.categories = data);
+    this.store.getToken().pipe(
+      concatMap(res => this.store.addToken(res))
+    ).subscribe(data => this.token = data)
 
   }
   getEasyMode():void{
-    this.lobbyService.getEasyQuestion(this.store.credentials.token);
+    this.lobbyService.getEasyQuestion(this.token);
+    this.store.getCredentials().subscribe(res => console.log(res))
+
   }
 
   getHardMode():void{
-    this.lobbyService.getHardQuestion(this.store.credentials.token);
+    this.lobbyService.getHardQuestion(this.token);
+    this.store.addToken(this.token);
   }
 
   getCustomMode():void{
-    this.lobbyService.getCustomQuestion(this.store.credentials.token, this.customForm.questions , this.customForm.difficulty, this.customForm.category, this.customForm.type)
-    // console.log(this.store.credentials.token, this.customForm.questions , this.customForm.difficulty, this.customForm.category, this.customForm.type);
-    // this.lobbyService.questions$.subscribe(data => console.log(data))
+    this.lobbyService.getCustomQuestion(this.token, this.customForm.questions , this.customForm.difficulty, this.customForm.category, this.customForm.type);
+    this.store.addToken(this.token);
 
-      }
-
-  submitCustom(f: NgForm){
-    console.log(f);
   }
+
 }

@@ -1,0 +1,24 @@
+<div style="height: 85vh; width: 100vw;" class="d-flex justify-content-center align-items-center">
+  <div class="d-flex position-absolute">
+    <div id="centraBox" class="d-flex justify-content-center align-items-start rounded text-white p-3">
+      <table class="table justify-content-center">
+        <thead>
+          <tr class="text-white-50 text-center">
+            <th scope="col"><h3>#</h3></th>
+            <th scope="col"><h3>Username</h3></th>
+            <th scope="col"><h3>Score</h3></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let elem of leaderboard; index as i" class="text-center">
+            <th scope="row "><h4 class="badge badge-pill badge-secondary">{{i+1}}</h4></th>
+            <td><h4>{{elem.userName}}</h4></td>
+            <td><h4>{{elem.score}}</h4></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    </div>
+
+

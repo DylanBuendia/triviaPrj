@@ -5,7 +5,6 @@ import { tap,map, Observable, BehaviorSubject } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 import { IUserToken } from '../models/interfaces/user-toker';
-import { leaderBoard } from '../models/mock/leaderboard';
 
 @Injectable({
   providedIn: 'root'
@@ -18,20 +17,19 @@ export class StoreService {
     score :0
   }
 
-  // leaderBoard!: IUserToken[];
-
   private credentialsSubject = new BehaviorSubject<IUserToken>(this.credentials);
   public credentials$ = this.credentialsSubject.asObservable();
 
   constructor(private readonly http: HttpClient) { }
 
-  getToken():void{
+  getToken():Observable<string>{
     const params = new HttpParams().set('command', 'request')
 
-    this.http.get<any>(`${environment.tokenUrl}`, {params})
+    return this.http.get<{ token: string }>(`${environment.tokenUrl}`, {params})
    .pipe(
     map(response => response.token)
-   ).subscribe(e=> this.credentials.token = e)
+   )
+  //  .subscribe(e=> this.credentials.token = e)
   }
 
   getCredentials(): Observable<IUserToken>{
@@ -41,6 +39,15 @@ export class StoreService {
   addUserName(name:string):  Observable<string>{
     return this.credentials$.pipe(
     map(res => res.userName = name))
+  }
+
+  addToken(token:string):Observable<string>{
+    return this.credentials$.pipe(
+      map(res => res.token = token))
+  }
+  addScore(): Observable<number>{
+    return this.credentials$.pipe(
+      map(res => res.score ++))
   }
 
   getLeaderboard(): Observable<IUserToken[]>{

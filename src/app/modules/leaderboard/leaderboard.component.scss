@@ -1,8 +1,8 @@
 #centraBox{
   color: whitesmoke;
   background-color: #016166;
-  width: 80vw;
-  height: 60vh;
+  min-width: 80vw;
+  // height: 60vh;
 }
 
 tr{
@@ -11,4 +11,9 @@ tr{
 }
  *{
    border: none!important;
+ }
+
+ .badge-secondary{
+   background-color: #A86C5D;
+   color: #013033;
  }
